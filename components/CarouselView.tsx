@@ -7,6 +7,7 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  link: string;
 }
 
 interface CarouselViewProps {
@@ -125,14 +126,21 @@ export default function CarouselView({ projects }: CarouselViewProps) {
       >
         <div className="flex gap-6 py-4 px-2">
           {doubled.map((p, index) => (
-            <div
-              key={index}
-              className="min-w-[380px] bg-white rounded-lg shadow p-4 hover:scale-[1.02] transition-transform text-center"
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
             >
-              <img src={p.image} className="rounded mb-3" />
-              <h3 className="text-xl font-semibold">{p.title}</h3>
-              <p className="opacity-70">{p.description}</p>
-            </div>
+              <div
+                key={index}
+                className="min-w-[380px] bg-white rounded-lg shadow p-4 hover:scale-[1.02] transition-transform text-center"
+              >
+                <img src={p.image} className="rounded mb-3" />
+                <h3 className="text-xl font-semibold">{p.title}</h3>
+                <p className="opacity-70">{p.description}</p>
+              </div>
+            </a>
           ))}
         </div>
       </div>

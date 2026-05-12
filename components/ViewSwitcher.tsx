@@ -8,7 +8,7 @@ interface ViewSwitcherProps {
 }
 
 export default function ViewSwitcher({ mode, setMode }: ViewSwitcherProps) {
-  const modes = ["carousel", "grid", "freeform"];
+  const modes = ["carousel", "grid"];
 
   return (
     <div className="flex gap-4 justify-center my-6">
@@ -18,7 +18,7 @@ export default function ViewSwitcher({ mode, setMode }: ViewSwitcherProps) {
           onClick={() => setMode(m)}
           className={`px-4 py-2 rounded-md capitalize ${
             mode === m
-              ? "bg-blue-600 text-white"
+              ? "bg-gray-600 text-white"
               : "bg-gray-200 dark:bg-gray-100"
           }`}
         >

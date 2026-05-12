@@ -15,9 +15,13 @@ export default function GridView({ projects }: GridViewProps) {
       {projects.map((p) => (
         <div
           key={p.id}
-          className="bg-white dark:bg-gray-800 rounded-lg shadow p-4"
+          className="bg-white rounded-lg shadow p-4 flex flex-col items-center text-center"
         >
-          <img src={p.image} className="rounded mb-3" />
+          <img
+            src={p.image}
+            className="rounded mb-3"
+            style={{ textAlign: "center" }}
+          />
           <h3 className="text-xl font-semibold">{p.title}</h3>
           <p className="opacity-70">{p.description}</p>
         </div>

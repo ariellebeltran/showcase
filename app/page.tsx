@@ -77,7 +77,7 @@ export default function Home() {
 
   return (
     <main className="px-6 py-10">
-      <h1 className="text-4xl text-gray-600 dark:text-gray-400 font-bold text-center mb-6">
+      <h1 className="text-4xl text-gray-600 dark:text-black-400 font-bold text-center mb-6">
         Featured Projects
       </h1>
 

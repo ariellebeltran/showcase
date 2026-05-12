@@ -20,7 +20,6 @@ export default function CarouselView({ projects }: CarouselViewProps) {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Duplicate list for seamless infinite loop
   const doubled = useMemo(() => [...projects, ...projects], [projects]);
 
   const normalizeScroll = () => {
@@ -28,6 +27,7 @@ export default function CarouselView({ projects }: CarouselViewProps) {
     if (!container) return;
 
     const halfWidth = container.scrollWidth / 2;
+
     if (container.scrollLeft >= halfWidth) {
       container.scrollLeft -= halfWidth;
     } else if (container.scrollLeft <= 0) {
@@ -35,7 +35,16 @@ export default function CarouselView({ projects }: CarouselViewProps) {
     }
   };
 
-  // Auto-scroll loop
+  // ⭐ Start in the middle for perfect infinite loop
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const halfWidth = container.scrollWidth / 2;
+    container.scrollLeft = halfWidth / 2;
+  }, []);
+
+  // Auto-scroll
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -44,7 +53,7 @@ export default function CarouselView({ projects }: CarouselViewProps) {
 
     const animate = () => {
       if (!isPaused && !isDragging) {
-        container.scrollLeft += 1; // speed
+        container.scrollLeft += 1;
         normalizeScroll();
       }
       frame = requestAnimationFrame(animate);
@@ -52,9 +61,9 @@ export default function CarouselView({ projects }: CarouselViewProps) {
 
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [isPaused, isDragging, projects]);
+  }, [isPaused, isDragging]);
 
-  // Drag-to-scroll
+  // Dragging
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     const container = scrollRef.current;
     if (!container) return;
@@ -76,7 +85,6 @@ export default function CarouselView({ projects }: CarouselViewProps) {
 
   const stopDragging = () => setIsDragging(false);
 
-  // Arrow controls
   const scrollByAmount = (amount: number) => {
     const container = scrollRef.current;
     if (!container) return;
@@ -85,7 +93,7 @@ export default function CarouselView({ projects }: CarouselViewProps) {
 
   return (
     <div className="relative w-full">
-      {/* Left Arrow */}
+      {/* Arrows */}
       <button
         onClick={() => scrollByAmount(-300)}
         className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/70 dark:bg-gray-100/70 backdrop-blur-md p-3 rounded-full shadow hover:scale-110 transition"
@@ -93,7 +101,6 @@ export default function CarouselView({ projects }: CarouselViewProps) {
         ‹
       </button>
 
-      {/* Right Arrow */}
       <button
         onClick={() => scrollByAmount(300)}
         className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/70 dark:bg-gray-100/70 backdrop-blur-md p-3 rounded-full shadow hover:scale-110 transition"
@@ -101,10 +108,10 @@ export default function CarouselView({ projects }: CarouselViewProps) {
         ›
       </button>
 
-      {/* Carousel Track */}
+      {/* ⭐ Scrollbar hidden + infinite loop working */}
       <div
         ref={scrollRef}
-        className="overflow-x-scroll whitespace-nowrap scrollbar-hide cursor-grab active:cursor-grabbing"
+        className="scrollbar-hide overflow-x-scroll whitespace-nowrap cursor-grab active:cursor-grabbing"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => {
           setIsPaused(false);
@@ -120,7 +127,7 @@ export default function CarouselView({ projects }: CarouselViewProps) {
           {doubled.map((p, index) => (
             <div
               key={index}
-              className="min-w-[280px] bg-white dark:bg-white-800 rounded-lg shadow p-4 snap-center hover:scale-[1.02] transition-transform"
+              className="min-w-[380px] bg-white rounded-lg shadow p-4 hover:scale-[1.02] transition-transform text-center"
             >
               <img src={p.image} className="rounded mb-3" />
               <h3 className="text-xl font-semibold">{p.title}</h3>
@@ -130,7 +137,7 @@ export default function CarouselView({ projects }: CarouselViewProps) {
         </div>
       </div>
 
-      {/* Hide scrollbar in all browsers */}
+      {/* Scrollbar hide */}
       <style jsx>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;

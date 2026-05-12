@@ -17,6 +17,7 @@ export const projects = [
     title: "Advisor Link",
     description: " ",
     image: "https://ariellebeltran.github.io/main/images/advisor-link_mockup2026.png",
+    link: "https://ariellebeltran.github.io/main/ux-ui_designer.html",
   },
   {
     id: 4,

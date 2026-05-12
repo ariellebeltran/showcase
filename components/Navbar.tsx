@@ -10,7 +10,10 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-white-900/80 backdrop-blur-md shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link
+          href="https://ariellebeltran-projectshowcase.vercel.app/"
+          className="flex items-center gap-2"
+        >
           <img
             src="https://ariellebeltran.github.io/main/images/testlogo-thick.png"
             alt="AB Logo"
@@ -27,7 +30,10 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 text-lg text-black-600 dark:text-white-400">
-          <Link href="/" className="hover:text-gray-600">
+          <Link
+            href="https://ariellebeltran-projectshowcase.vercel.app/"
+            className="hover:text-gray-600"
+          >
             Home
           </Link>
           {/* <Link href="/about" className="hover:text-blue-600">About</Link> */}

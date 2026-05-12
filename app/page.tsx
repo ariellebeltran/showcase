@@ -74,6 +74,10 @@ import FreeformView from "@/components/FreeformView";
 
 export default function Home() {
   const [mode, setMode] = useState("carousel");
+  const projectsWithLinks = projects.map((project) => ({
+    ...project,
+    link: project.link ?? "",
+  }));
 
   return (
     <main className="px-6 py-10">
@@ -83,9 +87,9 @@ export default function Home() {
 
       <ViewSwitcher mode={mode} setMode={setMode} />
 
-      {mode === "carousel" && <CarouselView projects={projects} />}
-      {mode === "grid" && <GridView projects={projects} />}
-      {mode === "freeform" && <FreeformView projects={projects} />}
+      {mode === "carousel" && <CarouselView projects={projectsWithLinks} />}
+      {mode === "grid" && <GridView projects={projectsWithLinks} />}
+      {mode === "freeform" && <FreeformView projects={projectsWithLinks} />}
     </main>
   );
 }

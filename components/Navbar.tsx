@@ -137,6 +137,16 @@ export default function Navbar() {
             </Link>
 
             <a
+              href="https://ariellebeltran.github.io/main/about-me.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-4 py-1 hover:bg-gray-100 hover-staatliches"
+              onClick={() => setOpen(false)}
+            >
+              About
+            </a>
+
+            <a
               href="https://1drv.ms/w/c/F1EDBC7B01B473B9/IQAIizPQJVjeRaFb6cgjWzByARgvjU4cC3EY9v5YPSAzVWA?e=r8xdCk"
               target="_blank"
               rel="noopener noreferrer"

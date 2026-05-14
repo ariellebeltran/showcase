@@ -7,6 +7,7 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  link: string;
 }
 
 interface CarouselViewProps {
@@ -127,7 +128,7 @@ export default function CarouselView({ projects }: CarouselViewProps) {
           {doubled.map((p, index) => (
             <a
               href={p.link}
-              target="_blank"
+              // target="_blank"
               rel="noopener noreferrer"
               className="block"
             >

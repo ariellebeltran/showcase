@@ -17,7 +17,7 @@ export default function GridView({ projects }: GridViewProps) {
         <a
           key={p.id}
           href={p.link}
-          target="_blank"
+          // target="_blank"
           rel="noopener noreferrer"
           className={`block ${p.link ? "cursor-pointer" : "cursor-default"}`}
         >

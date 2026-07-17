@@ -32,7 +32,7 @@ export const projects = [
     link: "https://ariellebeltran.github.io/main/ux-ui_designer.html",
     roles: [
       "UX/UI Designer",
-      "App Designer/Developer"
+      "App Developer"
     ]
   },
   {

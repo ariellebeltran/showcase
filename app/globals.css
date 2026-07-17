@@ -33,3 +33,24 @@ h1, body {
   font-weight: 500;
   font-size: 1.85rem;
 }
+
+/* Roles  */
+
+.role-outline {
+  border: 2px solid #9338D8;
+  color: #9338D8;
+  background: transparent;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem; /* text-xs */
+  transition: all 0.2s ease;
+}
+
+/* Optional: Staatliches hover effect */
+.role-outline:hover {
+  font-family: var(--font-staatliches);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #9338D8;
+  color: white;
+}

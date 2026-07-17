@@ -65,7 +65,7 @@ export const projects = [
     roles: [
       "UX/UI Designer",
       "Interaction Designer",
-      "Graphic Designer"
+      
     ]
   },
  

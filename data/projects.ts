@@ -12,6 +12,11 @@ export const projects = [
     title: "My Media",
     description: "",
     image: "https://ariellebeltran.github.io/main/images/mymediaapp_mockup2026.png",
+    roles: [
+      "UX/UI Designer",
+      "Graphic Designer",
+      "Web Designer"
+    ]
    
   },
   {

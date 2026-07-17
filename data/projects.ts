@@ -7,7 +7,7 @@ export const projects = [
     roles: [
       "UX/UI Designer",
       "Graphic Designer",
-      "App Designer/Developer"
+      "App Developer"
     ]
     
     
@@ -32,7 +32,8 @@ export const projects = [
     link: "https://ariellebeltran.github.io/main/ux-ui_designer.html",
     roles: [
       "UX/UI Designer",
-      "App Developer"
+      "Graphic Designer",
+      "Business Analyst"
     ]
   },
   {

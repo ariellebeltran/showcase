@@ -8,6 +8,7 @@ interface Project {
   description: string;
   image: string;
   link: string;
+  roles?: string[]; // ⭐ Add this
 }
 
 interface CarouselViewProps {
@@ -139,6 +140,20 @@ export default function CarouselView({ projects }: CarouselViewProps) {
                 <img src={p.image} className="rounded mb-3" />
                 <h3 className="text-xl font-semibold">{p.title}</h3>
                 <p className="opacity-70">{p.description}</p>
+
+                {/* ⭐ Related Roles */}
+                {p.roles && (
+                  <div className="flex flex-wrap gap-2 mt-3 justify-center">
+                    {p.roles.map((role) => (
+                      <span
+                        key={role}
+                        className="px-2 py-1 text-xs bg-gray-200 rounded-md"
+                      >
+                        {role}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </a>
           ))}

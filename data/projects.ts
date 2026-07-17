@@ -4,6 +4,11 @@ export const projects = [
     title: "Don't Forget!",
     description: "",
     image: "https://ariellebeltran.github.io/main/images/dont-forget_mockup2026.png", 
+    roles: [
+      "UX/UI Designer",
+      "Graphic Designer",
+      "App Designer/Developer"
+    ]
     
     
   },
@@ -25,6 +30,10 @@ export const projects = [
     description: " ",
     image: "https://ariellebeltran.github.io/main/images/advisor-link_mockup2026.png",
     link: "https://ariellebeltran.github.io/main/ux-ui_designer.html",
+    roles: [
+      "UX/UI Designer",
+      "App Designer/Developer"
+    ]
   },
   {
     id: 4,
@@ -32,6 +41,10 @@ export const projects = [
     description: " ",
     image: "https://ariellebeltran.github.io/main/images/blossom_mockup2026.png",
     link: "https://ariellebeltran.github.io/main/ux-ui_researcher.html",
+    roles: [
+      "UX/UI Designer",
+      "UX Researcher",
+    ]
   },
   {
     id: 5,
@@ -39,6 +52,9 @@ export const projects = [
     description: " ",
     image: "https://ariellebeltran.github.io/main/images/hao-electric_mockup2026.png",
     link: "https://ariellebeltran.github.io/main/graphic_designer.html",
+    roles: [
+      "Graphic Designer"
+    ]
   },
   {
     id: 6,
@@ -46,6 +62,11 @@ export const projects = [
     description: " ",
     image: "https://ariellebeltran.github.io/main/images/fb-seniors_mockup2026.png",
     link: "https://ariellebeltran.github.io/main/ux-ui_designer2.html",
+    roles: [
+      "UX/UI Designer",
+      "Interaction Designer",
+      "Graphic Designer"
+    ]
   },
  
 ];

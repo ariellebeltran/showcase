@@ -86,6 +86,7 @@ export default function Home() {
       try {
         const res = await fetch(
           "https://project-blog-bay.vercel.app/content.json",
+          { cache: "no-store" },
         );
 
         const data = await res.json();

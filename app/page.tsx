@@ -142,7 +142,7 @@ export default function Home() {
           {posts.map((post: any) => (
             <a
               key={post.slug}
-              href={`https://hexo-template.vercel.app/${post.slug}`}
+              href={`https://project-blog-bay.vercel.app/${post.slug}`}
               className="block p-4 rounded-lg shadow bg-white hover:scale-[1.02] transition-transform"
             >
               <h3 className="text-xl font-semibold mb-2">{post.title}</h3>

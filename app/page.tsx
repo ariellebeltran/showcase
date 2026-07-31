@@ -85,8 +85,9 @@ export default function Home() {
     async function loadPosts() {
       try {
         const res = await fetch(
-          "https://hexo-template.vercel.app/content.json",
+          "https://project-blog-bay.vercel.app/content.json",
         );
+
         const data = await res.json();
         setPosts(data);
       } catch (err) {

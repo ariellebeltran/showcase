@@ -65,7 +65,7 @@
 // }
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
 import ViewSwitcher from "@/components/ViewSwitcher";
 import CarouselView from "@/components/CarouselView";
@@ -79,6 +79,24 @@ export default function Home() {
     link: project.link ?? "",
   }));
 
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function loadPosts() {
+      try {
+        const res = await fetch(
+          "https://hexo-template.vercel.app/content.json",
+        );
+        const data = await res.json();
+        setPosts(data);
+      } catch (err) {
+        console.error("Failed to load blog posts:", err);
+      }
+    }
+
+    loadPosts();
+  }, []);
+
   return (
     <main className="px-6 py-10">
       <h1 className="text-4xl text-black-600 dark:text-black-400 font-bold text-center mb-6">
@@ -90,6 +108,28 @@ export default function Home() {
       {mode === "carousel" && <CarouselView projects={projectsWithLinks} />}
       {mode === "grid" && <GridView projects={projectsWithLinks} />}
       {mode === "freeform" && <FreeformView projects={projectsWithLinks} />}
+
+      {/* ⭐ Blog Section */}
+      <section className="mt-20">
+        <h2 className="text-3xl font-bold text-center mb-6">BLOG UPDATES</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {posts.length === 0 && (
+            <p className="text-center opacity-70">Loading blog posts...</p>
+          )}
+
+          {posts.map((post: any) => (
+            <a
+              key={post.slug}
+              href={`https://hexo-template.vercel.app/${post.slug}`}
+              className="block p-4 rounded-lg shadow bg-white hover:scale-[1.02] transition-transform"
+            >
+              <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+              <p className="opacity-70">{post.excerpt}</p>
+            </a>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

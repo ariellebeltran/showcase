@@ -72,6 +72,14 @@ import CarouselView from "@/components/CarouselView";
 import GridView from "@/components/GridView";
 import FreeformView from "@/components/FreeformView";
 
+// ⭐ Add a type so TypeScript knows what your blog posts look like
+type BlogPost = {
+  title: string;
+  slug: string;
+  excerpt?: string;
+  content?: string;
+};
+
 export default function Home() {
   const [mode, setMode] = useState("carousel");
   const projectsWithLinks = projects.map((project) => ({
@@ -79,7 +87,8 @@ export default function Home() {
     link: project.link ?? "",
   }));
 
-  const [posts, setPosts] = useState([]);
+  // ⭐ Fix: give posts a real type
+  const [posts, setPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     async function loadPosts() {
@@ -140,7 +149,7 @@ export default function Home() {
             <p className="text-center opacity-70">Loading blog posts...</p>
           )}
 
-          {posts.map((post: any) => (
+          {posts.map((post) => (
             <a
               key={post.slug}
               href={`https://project-blog-bay.vercel.app/${post.slug}`}

@@ -120,26 +120,6 @@ export default function Home() {
       {mode === "grid" && <GridView projects={projectsWithLinks} />}
       {mode === "freeform" && <FreeformView projects={projectsWithLinks} />}
 
-      {/* ⭐ Latest Post Highlight */}
-      {posts.length > 0 && (
-        <section className="mt-20 max-w-3xl mx-auto p-6 rounded-xl bg-white shadow">
-          <h2 className="text-3xl font-bold mb-4 text-center">LATEST POST</h2>
-
-          <a
-            href={`https://project-blog-bay.vercel.app/${posts[0].slug}`}
-            className="block hover:scale-[1.02] transition-transform"
-          >
-            <h3 className="text-2xl font-semibold mb-2 font-[Staatliches]">
-              {posts[0].title}
-            </h3>
-
-            <p className="opacity-70">
-              {posts[0].excerpt || "No excerpt available"}
-            </p>
-          </a>
-        </section>
-      )}
-
       {/* ⭐ Blog Section */}
       <section className="mt-20">
         <h2 className="text-3xl font-bold text-center mb-6">BLOG UPDATES</h2>

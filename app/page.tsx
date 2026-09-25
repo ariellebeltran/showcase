@@ -71,6 +71,7 @@ import ViewSwitcher from "@/components/ViewSwitcher";
 import CarouselView from "@/components/CarouselView";
 import GridView from "@/components/GridView";
 import FreeformView from "@/components/FreeformView";
+import WireframeView from "@/components/WireframeView";
 
 // ⭐ Add a type so TypeScript knows what your blog posts look like
 type BlogPost = {
@@ -118,7 +119,9 @@ export default function Home() {
 
       {mode === "carousel" && <CarouselView projects={projectsWithLinks} />}
       {mode === "grid" && <GridView projects={projectsWithLinks} />}
-      {mode === "freeform" && <FreeformView projects={projectsWithLinks} />}
+      {mode === "wireframe" && <WireframeView />}
+
+      {/* {mode === "freeform" && <FreeformView projects={projectsWithLinks} />} */}
 
       {/* ⭐ Blog Section */}
       <section className="mt-20">

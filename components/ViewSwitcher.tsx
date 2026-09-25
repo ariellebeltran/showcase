@@ -17,6 +17,10 @@ export default function ViewSwitcher({ mode, setMode }: ViewSwitcherProps) {
       id: "grid",
       icon: "https://ariellebeltran.github.io/main/images/grid_icon.png",
     },
+    {
+      id: "wireframe",
+      icon: "https://ariellebeltran.github.io/main/images/wireframe_icon.png",
+    },
   ];
 
   return (

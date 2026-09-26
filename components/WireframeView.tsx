@@ -86,27 +86,26 @@ export default function WireframeView() {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   return (
-    <div className="max-w-3xl mx-auto mt-12 px-6">
+    <div className="max-w-4xl mx-auto mt-12 px-6">
       {/* Header + Subheader */}
-      <h1 className="text-4xl font-bold tracking-tight mb-2">
+      {/* <h1 className="text-4xl font-bold tracking-tight mb-2">
         Anne Beltran is an
       </h1>
-      <h2 className="text-3xl font-bold mb-10">INTERDISCIPLINARY DESIGNER</h2>
+      <h2 className="text-3xl font-bold mb-10">INTERDISCIPLINARY DESIGNER</h2> */}
 
       {/* Interactive Rows */}
       <div className="space-y-10">
         {categories.map((cat) => (
           <div
             key={cat.name}
-            className="border-t pt-6 pb-4 cursor-pointer"
+            className="cursor-pointer"
             onMouseEnter={() => setHoveredCategory(cat.name)}
             onMouseLeave={() => setHoveredCategory(null)}
           >
-            <p className="text-xl font-semibold mb-4">{cat.name}</p>
+            <p className="text-xl font-semibold mb-3">{cat.name}</p>
 
-            {/* Hover thumbnails */}
             {hoveredCategory === cat.name && (
-              <div className="flex gap-4 flex-wrap transition-all">
+              <div className="flex gap-4 flex-wrap mb-4 transition-all">
                 {cat.projects.map((proj) => (
                   <Link
                     key={proj.title}
@@ -124,6 +123,8 @@ export default function WireframeView() {
                 ))}
               </div>
             )}
+
+            <div className="border-b border-black"></div>
           </div>
         ))}
       </div>

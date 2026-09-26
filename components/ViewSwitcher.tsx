@@ -11,15 +11,15 @@ export default function ViewSwitcher({ mode, setMode }: ViewSwitcherProps) {
   const modes = [
     {
       id: "carousel",
-      icon: "https://ariellebeltran.github.io/main/images/carousel_icon.png",
+      icon: "https://ariellebeltran.github.io/main/images/carousel_iconv2.png",
     },
     {
       id: "grid",
-      icon: "https://ariellebeltran.github.io/main/images/grid_icon.png",
+      icon: "https://ariellebeltran.github.io/main/images/grid_iconv2.png",
     },
     {
       id: "wireframe",
-      icon: "https://ariellebeltran.github.io/main/images/wireframe_icon.png",
+      icon: "https://ariellebeltran.github.io/main/images/slots_iconv2.png",
     },
   ];
 
@@ -39,7 +39,7 @@ export default function ViewSwitcher({ mode, setMode }: ViewSwitcherProps) {
             src={m.icon}
             alt={m.id}
             // className={`w-8 h-8 ${mode === m.id ? "invert brightness-0" : ""}`}
-            className={`w-7 h-7 ${mode === m.id ? " " : ""}`}
+            className={`w-14 h-14 ${mode === m.id ? " " : ""}`}
           />
         </button>
       ))}

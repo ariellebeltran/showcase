@@ -2,99 +2,41 @@
 
 import Link from "next/link";
 import { useState } from "react";
-
-interface Project {
-  title: string;
-  thumbnail: string;
-  link: string;
-}
-
-interface Category {
-  name: string;
-  projects: Project[];
-}
-
-const categories: Category[] = [
-  {
-    name: "UX/UI DESIGN",
-    projects: [
-      {
-        title: "Project 1",
-        thumbnail: "/thumbnails/ui1.jpg",
-        link: "/projects/ui1",
-      },
-      {
-        title: "Project 2",
-        thumbnail: "/thumbnails/ui2.jpg",
-        link: "/projects/ui2",
-      },
-      {
-        title: "Project 3",
-        thumbnail: "/thumbnails/ui3.jpg",
-        link: "/projects/ui3",
-      },
-      {
-        title: "Project 4",
-        thumbnail: "/thumbnails/ui4.jpg",
-        link: "/projects/ui4",
-      },
-      {
-        title: "Project 5",
-        thumbnail: "/thumbnails/ui5.jpg",
-        link: "/projects/ui5",
-      },
-    ],
-  },
-  {
-    name: "GRAPHIC DESIGN",
-    projects: [
-      {
-        title: "Poster Design",
-        thumbnail: "/thumbnails/gd1.jpg",
-        link: "/projects/gd1",
-      },
-      {
-        title: "Branding",
-        thumbnail: "/thumbnails/gd2.jpg",
-        link: "/projects/gd2",
-      },
-      {
-        title: "Illustration",
-        thumbnail: "/thumbnails/gd3.jpg",
-        link: "/projects/gd3",
-      },
-    ],
-  },
-  {
-    name: "WEB/MOBILE DEVELOPMENT",
-    projects: [
-      {
-        title: "App 1",
-        thumbnail: "/thumbnails/dev1.jpg",
-        link: "/projects/dev1",
-      },
-      {
-        title: "App 2",
-        thumbnail: "/thumbnails/dev2.jpg",
-        link: "/projects/dev2",
-      },
-    ],
-  },
-];
+import { projects } from "@/data/projects";
 
 export default function WireframeView() {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
+  // ⭐ Categories mapped from your real roles
+  const categories = [
+    {
+      name: "UX/UI DESIGN",
+      match: (p: any) => p.roles.includes("UX/UI Designer"),
+    },
+    {
+      name: "GRAPHIC DESIGN",
+      match: (p: any) => p.roles.includes("Graphic Designer"),
+    },
+    {
+      name: "WEB/MOBILE DEVELOPMENT",
+      match: (p: any) =>
+        p.roles.includes("App Developer") || p.roles.includes("Web Designer"),
+    },
+  ].map((cat) => ({
+    name: cat.name,
+    projects: projects.filter(cat.match),
+  }));
+
   return (
-    <div className="max-w-4xl mx-auto mt-12 px-6">
-      {/* Header + Subheader */}
-      {/* <h1 className="text-4xl font-bold tracking-tight mb-2">
+    <div className="max-w-3xl mx-auto mt-12 px-6">
+      {/* Header */}
+      <h1 className="text-4xl font-bold tracking-tight mb-2">
         Anne Beltran is an
       </h1>
-      <h2 className="text-3xl font-bold mb-10">INTERDISCIPLINARY DESIGNER</h2> */}
+      <h2 className="text-3xl font-bold mb-10">INTERDISCIPLINARY DESIGNER</h2>
 
       {/* Interactive Rows */}
-      <div className="space-y-10">
+      <div className="space-y-12">
         {categories.map((cat) => (
           <div
             key={cat.name}
@@ -102,19 +44,21 @@ export default function WireframeView() {
             onMouseEnter={() => setHoveredCategory(cat.name)}
             onMouseLeave={() => setHoveredCategory(null)}
           >
+            {/* Section Title */}
             <p className="text-xl font-semibold mb-3">{cat.name}</p>
 
+            {/* Hover thumbnails */}
             {hoveredCategory === cat.name && (
               <div className="flex gap-4 flex-wrap mb-4 transition-all">
                 {cat.projects.map((proj) => (
                   <Link
-                    key={proj.title}
-                    href={proj.link}
-                    className="block transition-transform hover:scale-110"
+                    key={proj.id}
+                    href={proj.link ?? "#"}
+                    className="transition-transform hover:scale-125"
                   >
-                    <div className="w-20 h-20 bg-gray-200 border border-black overflow-hidden">
+                    <div className="w-40 h-40 overflow-hidden">
                       <img
-                        src={proj.thumbnail}
+                        src={proj.image}
                         alt={proj.title}
                         className="w-full h-full object-cover"
                       />
@@ -124,6 +68,7 @@ export default function WireframeView() {
               </div>
             )}
 
+            {/* Divider */}
             <div className="border-b border-black"></div>
           </div>
         ))}

@@ -19,7 +19,6 @@ export const projects = [
     image: "https://ariellebeltran.github.io/main/images/mymediaapp_mockup2026.png",
     roles: [
       "UX/UI Designer",
-      "Graphic Designer",
       "Web Designer"
     ]
    

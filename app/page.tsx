@@ -47,11 +47,16 @@ export default function Home() {
   return (
     <main className="px-6 py-10">
       {/* Header + subheader */}
-      {/* <h1 className="text-4xl font-bold mb-2">Anne Beltran is an</h1>
-      <h2 className="text-3xl font-bold mb-6">INTERDISCIPLINARY DESIGNER</h2> */}
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-5xl font-bold mb-2">ANNE BELTRAN</h1>
+        <h2 className="text-3xl font-semibold mb-6">
+          Interdisciplinary Designer
+        </h2>
+      </div>
+
       {/* change view button, right side, above switches / first section */}
       {/* <div className="flex justify-end mb-4"> */}
-      <div className="max-w-4xl mx-auto mt-12 px-6 text-right">
+      <div className="max-w-4xl mx-auto mt-12 px-6 text-center">
         <button
           onClick={() => setShowSwitcher((prev) => !prev)}
           className="text-black font-medium"

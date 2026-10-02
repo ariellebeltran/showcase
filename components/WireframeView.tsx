@@ -30,10 +30,10 @@ export default function WireframeView() {
   return (
     <div className="max-w-3xl mx-auto mt-12 px-6">
       {/* Header */}
-      <h1 className="text-4xl font-bold tracking-tight mb-2">
+      {/* <h1 className="text-4xl font-bold tracking-tight mb-2">
         Anne Beltran is an
       </h1>
-      <h2 className="text-3xl font-bold mb-10">INTERDISCIPLINARY DESIGNER</h2>
+      <h2 className="text-3xl font-bold mb-10">INTERDISCIPLINARY DESIGNER</h2> */}
 
       {/* Interactive Rows */}
       <div className="space-y-12">

@@ -33,9 +33,19 @@ export default async function UpdatesPage() {
         <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
           AI-powered updates
         </span>
-        <h1 className="mt-4 text-4xl font-bold text-slate-900">Latest Updates</h1>
-        <p className="mt-2 max-w-2xl text-slate-600">
-          Track the newest milestones and get a quick AI-assisted summary of what changed.
+        <div className="flex justify-between items-center mb-6 mt-2">
+          <h2 className="text-3xl font-bold">PROJECT UPDATES</h2>
+
+          <a
+            href="/"
+            className="text-black-500 hover:text-gray-700 font-medium"
+          >
+            ← Back
+          </a>
+        </div>
+        <p className="mt-2 text-slate-600">
+          Track the newest milestones and get a quick AI-assisted summary of
+          what changed.
         </p>
       </div>
 
@@ -76,7 +86,9 @@ export default async function UpdatesPage() {
 
               <p className="text-slate-700">{excerpt}</p>
 
-              <p className="mt-4 text-sm leading-6 text-slate-600">{aiSummary}</p>
+              <p className="mt-4 text-sm leading-6 text-slate-600">
+                {aiSummary}
+              </p>
             </a>
           );
         })}

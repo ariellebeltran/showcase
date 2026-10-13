@@ -23,3 +23,11 @@ export async function getPostBySlug(slug: string) {
     return postSlug === slug;
   });
 }
+
+export async function getPageBlocks(pageId: string) {
+  const blocks = await notion.blocks.children.list({
+    block_id: pageId,
+  });
+
+  return blocks.results;
+}

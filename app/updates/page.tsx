@@ -26,7 +26,11 @@ function buildAiSummary(title: string, excerpt: string) {
 export default async function UpdatesPage() {
   const response: any = await getPosts();
   const posts = Array.isArray(response?.results) ? response.results : [];
-
+const validPosts = posts.filter(
+  (post: any) =>
+    post.properties?.Title?.title?.[0]?.plain_text &&
+    post.properties?.Status?.select?.name === "Published"
+);
   return (
     <main className="max-w-5xl mx-auto px-6 py-10">
       <div className="mb-8">
@@ -50,7 +54,7 @@ export default async function UpdatesPage() {
       </div>
 
       <div className="grid gap-6">
-        {posts.map((post: any) => {
+        {validPosts.map((post: any) => {
           const title =
             post.properties?.Title?.title?.[0]?.plain_text || "Untitled";
 
@@ -58,9 +62,19 @@ export default async function UpdatesPage() {
             post.properties?.Excerpt?.rich_text?.[0]?.plain_text ||
             "No excerpt yet.";
 
-          const date =
-            post.properties?.Date?.date?.start ||
-            post.created_time?.split("T")[0];
+          const rawDate =
+  post.properties?.Date?.date?.start ||
+  post.created_time?.split("T")[0];
+
+const date = new Date(rawDate).toLocaleDateString(
+  "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }
+);
+``
 
           const slug =
             post.properties?.Slug?.rich_text?.[0]?.plain_text || post.id;

@@ -2,7 +2,7 @@ import { getPosts } from "@/lib/notion";
 
 export default async function LatestUpdateCard() {
   const response: any = await getPosts();
-
+console.log(response.results);
   const latestPost = response.results[0];
 
   if (!latestPost) {
@@ -16,9 +16,19 @@ export default async function LatestUpdateCard() {
     latestPost.properties?.Excerpt?.rich_text?.[0]?.plain_text ||
     "No excerpt yet.";
 
-  const date =
-    latestPost.properties?.Date?.date?.start ||
-    latestPost.created_time?.split("T")[0];
+const rawDate =
+  latestPost.properties?.Date?.date?.start ||
+  latestPost.created_time?.split("T")[0];
+
+const date = new Date(rawDate).toLocaleDateString(
+  "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }
+);
+``
 
   const slug =
     latestPost.properties?.Slug?.rich_text?.[0]?.plain_text || latestPost.id;

@@ -28,9 +28,12 @@ export default async function UpdatesPage() {
   const posts = Array.isArray(response?.results) ? response.results : [];
 const validPosts = posts.filter(
   (post: any) =>
-    post.properties?.Title?.title?.[0]?.plain_text &&
+    post.properties?.Title?.title?.[0]?.plain_text ||
     post.properties?.Status?.select?.name === "Published"
 );
+
+
+
   return (
     <main className="max-w-5xl mx-auto px-6 py-10">
       <div className="mb-8">

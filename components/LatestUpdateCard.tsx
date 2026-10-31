@@ -29,7 +29,7 @@ const date = new Date(rawDate).toLocaleDateString(
   }
 );
   const slug =
-    latestPost.properties?.Status?.select?.name === "Published"
+    latestPost.properties?.Status?.select?.name !== "Draft"
       ? latestPost.properties?.Slug?.rich_text?.[0]?.plain_text || latestPost.id
       : latestPost.id;
   return (

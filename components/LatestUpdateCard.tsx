@@ -28,10 +28,15 @@ const date = new Date(rawDate).toLocaleDateString(
     day: "numeric",
   }
 );
+``
+
+  if (latestPost.properties?.Status?.select?.name === "Draft") {
+    return <p className="text-lg opacity-70">No updates available.</p>;
+  }
+
   const slug =
-    latestPost.properties?.Status?.select?.name !== "Draft"
-      ? latestPost.properties?.Slug?.rich_text?.[0]?.plain_text || latestPost.id
-      : latestPost.id;
+    latestPost.properties?.Slug?.rich_text?.[0]?.plain_text || latestPost.id;
+
   return (
     <a href={`/updates/${slug}`}>
       <div className="mb-3 flex items-center justify-between">

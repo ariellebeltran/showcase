@@ -28,8 +28,8 @@ export default async function UpdatesPage() {
   const posts = Array.isArray(response?.results) ? response.results : [];
 const validPosts = posts.filter(
   (post: any) =>
-    post.properties?.Title?.title?.[0]?.plain_text ||
-    post.properties?.Status?.select?.name === "Published"
+    post.properties?.Title?.title?.[0]?.plain_text &&
+    post.properties?.Status?.select?.name !== "Draft"
 );
 
 

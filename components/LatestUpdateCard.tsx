@@ -28,11 +28,10 @@ const date = new Date(rawDate).toLocaleDateString(
     day: "numeric",
   }
 );
-``
-
   const slug =
-    latestPost.properties?.Slug?.rich_text?.[0]?.plain_text || latestPost.id;
-
+    latestPost.properties?.Status?.select?.name === "Published"
+      ? latestPost.properties?.Slug?.rich_text?.[0]?.plain_text || latestPost.id
+      : latestPost.id;
   return (
     <a href={`/updates/${slug}`}>
       <div className="mb-3 flex items-center justify-between">
